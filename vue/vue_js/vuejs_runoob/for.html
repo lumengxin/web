@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-循环语句</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>7.vuejs循环语句</h1>
+		<p>v-for指令需要以site in sites形式的特殊语法，sites是源数据数组并且site是数组元素迭代的别名</p>
+		<p>v-for可以绑定数据到数组来渲染一个列表</p>
+
+		<h2>7.1v-for</h2>
+		<div id="app">
+			<ol>
+				<li v-for="site in sites">
+					{{ site.name }}
+				</li>
+			</ol>
+		</div>
+
+		<h2>7.2v-for迭代对象</h2>
+		<p>v-for可以通过一个对象的属性来迭代数据</p>
+		<div id="app1">
+			<ul>
+				<li v-for="value in object">
+					{{ value }}
+				</li>
+			</ul>
+		</div>
+
+		<h2>7.3v-for迭代整数</h2>
+		<div id="app2">
+			<ul>
+				<li v-for="n in 10">
+					{{ n }}
+				</li>
+			</ul>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					sites: [
+						{ name: 'css' },
+						{ name: 'java' },
+						{ name: 'c' }
+					]
+				}
+			});
+			new Vue({
+				el: '#app1',
+				data: {
+					object: {
+						name: 'c',
+						url: 'http://www.yxw.com',
+						slogan: 'cccccc'
+					}				
+				}
+			});
+			new Vue({
+				el:'#app2'
+			})
+		</script>
+		
+	</body>
+</html>
+
+

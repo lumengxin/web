@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-自定义组件</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>14.vuejs自定义组件</h1>
+		<p>除了默认的核心指令（v-model,v-show)也可以注册自定义指令。</p>
+		<p>注册一个全局指令v-focus,该指令的功能是在页面加载时，元素获得焦点：</p>
+		<div id="app">
+			<p>页面载入时，input元素自动获取焦点：</p>
+			<input v-focus>
+		</div>
+
+
+		<h2>14.1钩子</h2>
+		<h3>14.1.1钩子函数</h3>
+		<p>指令定义函数提供了几个钩子函数：</p>
+		<table border="1">
+			<tbody>
+				<tr>
+					<th>1</th>
+					<td>bind:只调用一次，指令第一次绑定到该元素时。</td>
+				</tr>
+				<tr>
+					<th>2</th>
+					<td>inserted:被绑定元素插入父节点时调用。</td>
+				</tr>
+				<tr>
+					<th>3</th>
+					<td>update:更新时。</td>
+				</tr>
+				<tr>
+					<th>4</th>
+					<td>comonentUpdataed:一次更新周期。</td>
+				</tr>
+				<tr>
+					<th>5</th>
+					<td>unbind:解绑。</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>14.1.2钩子函数</h3>
+		<p>钩子函数有：</p>
+		<ul>
+			<li>el:指令所绑定的元素，可以用来直接操作DOM。</li>
+			<li>binding:一个对象，包含以下属性：
+				<ul>
+					<li>name:</li>
+					<li>value:</li>
+					<li>oldValue:</li>
+					<li>expression:</li>
+				</ul>
+			</li>
+			<li>vnode:vue编译生成的虚拟节点。</li>
+		</ul>
+		<div id="app2" v-runoob:hello.a.b="message">
+		</div>
+
+		<script>
+			//注册一个全局自定义指令
+			Vue.directive('focus', {
+				//当绑定元素插入到DOM中
+				inserted: function(el) {
+					//聚焦元素
+					el.focus()
+				}
+			})
+			//创建根实例
+			new Vue({
+				el: '#app',
+			})
+
+			Vue.directive('runoob', {
+			  bind: function (el, binding, vnode) {
+			    var s = JSON.stringify
+			    el.innerHTML =
+			      'name: '       + s(binding.name) + '<br>' +
+			      'value: '      + s(binding.value) + '<br>' +
+			      'expression: ' + s(binding.expression) + '<br>' +
+			      'argument: '   + s(binding.arg) + '<br>' +
+			      'modifiers: '  + s(binding.modifiers) + '<br>' +
+			      'vnode keys: ' + Object.keys(vnode).join(', ')
+			  }
+			})
+			new Vue({
+			  el: '#app2',
+			  data: {
+			    message: '菜鸟教程!'
+			  }
+			})
+		</script>
+		
+	</body>
+</html>
+
+

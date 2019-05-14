@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-安装</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>2.vuejs安装</h1>
+
+		<h2>2.1独立安装</h2>
+		<p>Vue.js官网上下载vue.min.js并引入<p>
+
+		<h2>2.2使用CDN方法</h2>
+		<ul>
+			<li>Staticfile CDN:https://cdn.staticfile.org/vue/2.2.2/vue.min.js</li>
+			<li>unpkg：https://unpkg.com/vue/dist/vue.js, 会保持和 npm 发布的最新的版本一致。</li>
+			<li>...</li>
+		</ul>
+		<hr/>
+		<div id="app">
+			<p>{{ message }}</p>
+		</div>
+		<hr/>
+
+		<h2>2.3NPM方法</h2>
+		<p>安装：cnpm install npm -g;(npm -v>3.0)</p>
+		<p>用vue.js构建大型应用时推荐用npm安装
+		<span>cnpm install vue</span></p>
+		<h3>2.3.1命令行工具</h3>
+		<p>vue-cli：用于快速构建大型单页应用</p>
+		<p>全局安装：cnpm install --global vue-cli</p>
+		<p>创建基于webpack模板的新项目：vue init webpack my_project<p>
+		<p>进入项目,安装并运行:cd my_project;
+		<span>cnpm install;</span>
+		<span>cnpm run dev;</span><p>
+		<h3>2.3.2在Cloud Studio中运行vue.js</h3>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					message: '这里使用的是staticfile cdn'
+				}
+			})
+		</script>
+		
+	</body>
+</html>
+
+

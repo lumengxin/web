@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-模板语法</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>5.vuejs模板语法</h1>
+		<p>Vue.js使用了基于html的模板语法，允许开发者声明式的将DOM绑定至底层Vue实例的数据。</p>
+		<p>Vue.js的核心是一个允许你采用简介的模板语法来声明式的将数据渲染进DOM的系统。</p>
+		<p>结合响应系统，在应用状态改变时，vue能够智能计算出重新渲染组件的最小代价并应用到DOC操作上。</p>
+
+		<h2>5.1插值</h2>
+		<h3>5.1.1文本</h3>
+		<p>数据绑定的常见形式是使用 {{...}}的文本插值</p>
+		<code>
+			<div id="appp">
+				<p>{{ mes }}</p>
+			</div>
+		</code>
+		<h3>5.1.2html</h3>
+		<p>使用v-html指令用于输出html代码</p>
+		<pre>
+			<div id="appp">
+				<div v-html="mes"></div>
+			</div>
+			...
+		</pre>
+		<h3>5.1.3属性</h3>
+		<p>html属性中的值应该用v-bind指令</p>
+		<blockquote>
+			<div v-bind:class="{'class1': use}">
+				v-bind:class 指令
+			</div>
+			...
+		</blockquote>				
+		<h3>5.1.4表达式</h3>
+		<p>Vue.js提供了完全的js表达式支持</p>
+
+		<h2>5.2指令</h2>
+		<p>指令是带有v-前缀的特殊属性</p>
+		<p>指令用在表达式的值改变是，将某些行为应用到DOM</p>
+		<h3>5.2.1参数</h3>
+		<p>参数在指令后以冒号指明</p>
+		<h3>5.2.2修饰符</h3>
+		<p>.,用于支出一个指令应该以特殊方式绑定</p>
+
+		<h2>5.3用户输入</h2>
+		<p>v-model指令实现双向绑定</p>
+
+		<h2>5.4过滤器</h2>
+		<p>vue.js允许自定义过滤器,被用作一些常见的文本格式化。由管道符“|”指示。</p>
+
+		<h2>5.5缩写</h2>
+		<p>v-bind:</p>
+		<p>v-on:</p>
+
+
+		<h2>-----------------相关代码-----------------</h2>
+		<h4>v-html</h4>
+		<div id="app1">
+			<div v-html="mess"></div>
+		</div>
+		<h4>v-bind</h4>
+		<div id="app2">
+			<label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+			<br><br>
+			<div v-bind:class="{'class1': use}">
+				v-bind:class 指令
+			</div>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app1',
+				data: {
+					mess: 'v-html指令输出html代码'
+				}
+			});
+			new Vue({
+				el: '#app2',
+				data: {
+					use: true
+				}
+			});
+		</script>
+		
+	</body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-目录结构</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>3.vuejs目录结构</h1>
+
+		<h2>3.1目录解析</h3>
+		<table border="1">
+			<tr>
+				<th>目录/文件</th>
+				<th>说明</th>
+			</tr>
+			<tr>
+				<td>build</td>
+				<td>项目构建（webpack）相关代码</td>
+			</tr>
+			<tr>
+				<td>config</td>
+				<td>配置目录</td>
+			</tr>
+			<tr>
+				<td>node_modules</td>
+				<td>npm加载的项目依赖模块</td>
+			</tr>
+			<tr>
+				<td>src</td>
+				<td>开发目录
+					<ul>
+						<li>assets:放置图片等</li>
+						<li>components:组件文件</li>
+						<li>App.vue:项目入口文件</li>
+						<li>main.js:项目核心文件</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>static</td>
+				<td>静态资源，如图片字体等</td>
+			</tr>
+			<tr>
+				<td>index.html</td>
+				<td>首页入口文件，可添加一些meta或统计代码等</td>
+			</tr>
+			<tr>
+				<td>package.json</td>
+				<td>项目配置文件</td>
+			</tr>
+			<tr>
+				<td>xxx</td>
+				<td>...</td>
+			</tr>
+		</table>
+
+		<h2></h2>
+		<div id="app">
+			<p>{{ message }}</p>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					message: ' '
+				}
+			})
+		</script>
+		
+	</body>
+</html>
+
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-组件</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>13.vuejs组件</h1>
+		<p>组件是vue.js最强大的功能之一</p>
+		<p>组件可以扩展html元素，封装可重用的代码</p>
+		<p>组件系统用独立可复用的小组件来构建大型应用</p>
+		<em>注册全局组件：</em>
+		<code>
+			Vue.component(tagName, options)
+		</code><br/>
+		<em>调用组件：</em>
+		<textarea>
+			<tagName></tagName>
+		</textarea>
+
+		<h2>13.1全局组件</h2>
+		<div id="app">
+			<runoob></runoob>
+		</div>
+
+		<h2>13.2局部组件</h2>
+		<div id="app2">
+			<runoob></runoob>
+		</div>
+
+		<h2>13.3Prop</h2>
+		<p>prop是父组价用来传递数据的一个自定义属性</p>
+		<div id="app3">
+			<child message="hello,prop"></child>
+		</div>
+		<h3>13.3.1动态Prop</h3>
+		<div id="app4">
+			<div>
+				<input v-model="parentMsg">
+				<br>
+				<childs v-bind:message="parentMsg"></childs>
+			</div>
+		</div>
+		<h3>13.3.2prop验证</h3>
+		<p>组件可以为props指定验证要求</p>
+		<p>prop是一个对象而不是字符串数组时，他包含验证要求：</p>
+		<code>
+		<pre>		
+		Vue.componet('example', {
+			props: {
+				//基础类型检测
+				propA: Number,
+				//多种类型
+				propB: [String, Number],
+				...
+			}
+		})
+		</pre>
+		</code>
+
+		<h2>13.4自定义事件</h2>
+		<p>父组件是使用props传递数据给子组件，但如果子组件要把数据传递回去，就需要用自定义事件。</p>
+		<p>可以使用v-on绑定自定义事件，每个vue实例都实现了事件接口（Events insterface)，即：</p>
+		<ul>
+			<li>使用$on(eventName)监听事件</li>
+			<li>使用$emit(eventName)触发事件</li>
+		</ul>
+		<div id="app5">
+				<div id="counter-event-example">
+					<p>{{ total }}</p>
+					<button-counter v-on:increment="incrementTotal"></button-counter>
+					<button-counter v-on:increment="incrementTotal"></button-counter>
+				</div>
+		</div>
+		<b>data必须是一个函数</b>
+		<div id="components-demo3" class="demo">
+				<button-counter2></button-counter2>
+				<button-counter2></button-counter2>
+				<button-counter2></button-counter2>
+		</div>
+
+		<script>
+			Vue.component('runoob', {
+				template: '<h3>自定义一个全局组件</h3>'
+			})
+			//创建根实例
+			new Vue({
+				el: '#app'
+			})
+
+			var Child = {
+				template: '<h3>自定义一个局部组件</h3>'
+			}
+			new Vue({
+				el: '#app2',
+				components: {
+					//runoob将只在父模板可用
+					'runoob': Child
+				}
+			})
+
+			// 注册
+			Vue.component('child', {
+				// 声明 props
+				props: ['message'],
+				// 同样也可以在 vm 实例中像 "this.message" 这样使用
+				template: '<span>{{ message }}</span>'
+			})
+			// 创建根实例
+			new Vue({
+				el: '#app3'
+			})
+
+			// 注册
+			Vue.component('childs', {
+				// 声明 props
+				props: ['message'],
+				// 同样也可以在 vm 实例中像 "this.message" 这样使用
+				template: '<span>{{ message }}</span>'
+			})
+			// 创建根实例
+			new Vue({
+				el: '#app4',
+				data: {
+					parentMsg: '父组件内容'
+				}
+			})
+
+			Vue.component('button-counter', {
+				template: '<button v-on:click="incrementHandler">{{ counter }}</button>',
+				data: function () {
+					return {
+						counter: 0
+					}
+				},
+				methods: {
+					incrementHandler: function () {
+						this.counter += 1
+						this.$emit('increment')
+					}
+				},
+			})
+			new Vue({
+				el: '#counter-event-example',
+				data: {
+					total: 0
+				},
+				methods: {
+					incrementTotal: function () {
+						this.total += 1
+					}
+				}
+			})
+
+			var buttonCounter2Data = {
+				count: 0
+			}
+			Vue.component('button-counter2', {
+					/*
+					data: function () {
+							// data 选项是一个函数，组件不相互影响
+							return {
+									count: 0
+							}
+					},
+					*/
+					data: function () {
+							// data 选项是一个对象，会影响到其他实例
+							return buttonCounter2Data
+					},
+					template: '<button v-on:click="count++">点击了 {{ count }} 次。</button>'
+			})
+			new Vue({ el: '#components-demo3' })
+		</script>
+		
+	</body>
+</html>
+
+

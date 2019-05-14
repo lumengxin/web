@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-监听属性</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>9.vuejs监听属性</h1>
+		<p>vue.js监听属性watch,可以通过watch来响应数据的变化。</p>
+		<em>watch实现计数器：</em>
+		<div id="app">
+			<p style="font-size:25px;">计数器：{{ counter }}</p>
+			<button @click="counter++" style="font-size:25px;">点我</p>
+		</div>
+		<em>千米与米之间的换算：</em>
+		<div id="computed_props">
+			千米：<input type="text" v-model="kilometers">
+			米	：<input type="text" v-model="meters">
+		</div>
+		<p id="info"></p>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					counter: 1
+				}
+			});
+			vm.$watch('counter', function(nval, oval){
+				alert('计数器值变化：' + oval + '变为' + nval + '!');
+			});
+			var sm = new Vue({
+				el: '#computed_props',
+				data: {
+					kilometers: 0,
+					meters: 0
+				},
+				methods: {
+					
+				},
+				computed: {
+				
+				},
+				watch: {
+					kilometers: function(val) {
+						this.kilometers = val;
+						this.meters = this.kilometers * 1000
+					},
+					meters: function(val) {
+						this.kilometers = val / 1000;
+						this.meters = val;
+					}
+				}
+			});
+			//$watch是一个实例方法
+			sm.$watch('kilometers', function(newValue,oldValue) {
+				//这个回调将在sm.kilometers改变后调用
+				document.getElementById("info").innerHTML = "修改前的值为：" + oldValue + ",修改后的值为：" + newValue;
+			})
+		</script>
+		
+	</body>
+</html>
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-路由</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	</head>
+	<body>
+		<h1>15.vuejs路由</h1>
+		<p>vue.js路由允许通过不同的url访问不同的内容。</p>
+		<p>通过vue.js可以实现多视图的单页web应用。</p>
+		<p>vue.js路由需要载<a href="https://github.com/vuejs/vue-router">vue-router库</a></p>
+
+		<h2>15.1安装</h2>
+		<h3>直接下载/CDN</h3>
+		<code>http://unpkg.com/vue-router/dist/vue-router.js</code>
+		<h3>NPM</h3>
+		<p>淘宝镜像：</p>
+		<code>cnpm install vue-router</code>
+
+		<h2>15.2简单实例</h2>
+		<p>vue.js+vue-router可以很简单实现单页应用</p>
+		<xmp><router-link>是一个组件，用于设置一个导航链接，切换不同HTML内容。</xmp>
+		<div id="app">
+			<h3>hello vue-router</h3>
+			<p>
+				<!-- 使用router-link组件来导航 -->
+				<!-- 通过传入`to`属性指定链接 -->
+				<!-- <router-link>默认被渲染成一个`<a>`标签 -->
+				<router-link to="/foo">Go to Foo</router-link>
+				<router-link to="/bar">Go to Bar</router-link>
+			</p>
+			<!-- 路由出口 -->
+			<!-- 路由匹配到的组件将渲染到这里 -->
+			<router-view></router-view>
+		</div>
+
+		<h2>15.3<span><</span>router-link>相关属性</h2>
+		<li>to:</li>
+		<li>replace:</li>
+		<li>append:</li>
+		<li>tag:</li>
+
+		<script>
+			// 0. 如果使用模块化机制编程，导入 Vue 和 VueRouter，要调用 Vue.use(VueRouter)
+ 
+			// 1. 定义（路由）组件。
+			// 可以从其他文件 import 进来
+			const Foo = { template: '<div>foo</div>' }
+			const Bar = { template: '<div>bar</div>' }
+			 
+			// 2. 定义路由
+			// 每个路由应该映射一个组件。 其中"component" 可以是
+			// 通过 Vue.extend() 创建的组件构造器，
+			// 或者，只是一个组件配置对象。
+			const routes = [
+			  { path: '/foo', component: Foo },
+			  { path: '/bar', component: Bar }
+			]
+			 
+			// 3. 创建 router 实例，然后传 `routes` 配置
+			// 你还可以传别的配置参数, 不过先这么简单着吧。
+			const router = new VueRouter({
+			  routes // （缩写）相当于 routes: routes
+			})
+			 
+			// 4. 创建和挂载根实例。
+			// 记得要通过 router 配置参数注入路由，
+			// 从而让整个应用都有路由功能
+			const app = new Vue({
+			  router
+			}).$mount('#app')
+		</script>
+		
+	</body>
+</html>
+
+

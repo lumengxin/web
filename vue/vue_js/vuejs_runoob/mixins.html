@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-混入</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>17.vuejs混入</h1>
+		<p>混入定义了一部分可复用的方法或者计算属性。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项被混入该组件本身的选项。</p>
+		<strong>实例：</strong>
+		<div id="app">
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				methods: {
+
+				},
+			});
+			//定义一个混入对象
+			var myMixin = {
+				created: function() {
+					this.startmixin()
+				},
+				methods: {
+					startmixin: function() {
+						document.write("欢迎进入混入实例");
+					}
+				}
+			};
+			var Component = Vue.extend({
+				mixins: [myMixin]
+			})
+			var component = new Component();
+		</script>
+		
+	</body>
+</html>

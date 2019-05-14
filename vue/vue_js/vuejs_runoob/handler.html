@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-事件处理器</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>11.vuejs事件处理器</h1>
+		<b>事件监听可以使用v-on指令：</b>
+		<div id="app">
+			<button v-on:click="counter += 1">+1</button>
+			<p>这个按钮被点击了 {{ counter }} 次。</p>
+		</div>
+		<b>v-on可以接受一个定义的方法来调用</b>
+		<div id="app2">
+			<!--`greet`是在下面定义的方法名-->
+			<button v-on:click="greet">Greet</button>
+		</div>
+		<b>也可以用内联的JavaScript语句：</b>
+		<div id="app3">
+			<button v-on:click="say('hi')">say</button>
+		</div>
+
+		<h2>11.1事件修饰符</h2>
+		<p>vue.js为v-on提供了事件修饰符来处理DOM事件细节。如event.preventDefault()。</p>
+		<p>vue.js通过点（.）表示的指令后缀来调用修饰符。</p>
+		<ul>
+			<li>.stop</li>
+			<li>.prevent</li>
+			<li>.capture</li>
+			<li>.self</li>
+			<li>.once</li>
+		</ul>
+
+		<h2>11.2按键修饰符</h2>
+		<p>vue允许为v-on在监听事件时添加按键修饰符。</p>
+		<p>
+		<span><</span>
+		<span>input v-on:keyup.enter="submit"></span>
+		</p>
+		<p>
+		<span><</span>
+		<span>-- 缩写 --></span>
+		</p>
+		<p>
+		<span><</span>
+		<span>input @keyup.enter="submit"></span>
+		</p>
+		<p>常用按键别名：</p>
+		<ul>
+			<li>.enter</li>
+			<li>.tab</li>
+			<li>.delete</li>
+			<li>.space</li>
+		</ul>
+
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					counter: 0
+				}
+			})
+			var app = new Vue({
+				el: '#app2',
+				data: {
+					name: 'vue.js'
+				},
+				//在`methods`对象中定义方法
+				methods: {
+					greet: function(event) {
+						//`this`在方法中指当前vue实例
+						alert('hello ' + this.name + '!')
+						//`event`是原生的DOM事件
+						if(event) {
+							alert(event.target.tagName)
+						}
+					}
+				}
+			})
+			//用可以使用javascript直接调用方法
+			//app.greet()
+			new Vue({
+				el: '#app3',
+				methods: {
+					say: function(message) {
+					  alert(message)
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>
+
+

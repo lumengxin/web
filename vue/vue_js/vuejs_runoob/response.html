@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-响应接口</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>19.vuejs响应接口</h1>
+		<p>vue可以添加数据动态响应接口。</p>
+		<p>通过使用$watch属性来实现数据的监听，必须在vue私立之外才能实现正确的响应。</p>
+
+		<h2></h2>
+		<div id="app">
+			<p style="font-size: 25px;">计数器：{{ counter }}</p>
+			<button @click="counter++" style="font-size: 25px;">点我</button>
+		</div>
+
+		<script>
+			var rm = new Vue({
+				el: '#app',
+				data: {
+					counter: 1
+				}
+			});
+			rm.$watch('counter', function(nval, oval){
+				alert('计数器变化：' + oval + ' 变为 ' + nval + '!');
+			});
+			setTimeout(
+				function() {
+					vm.counter += 20;
+				},10000
+			);
+		</script>
+		
+	</body>
+</html>

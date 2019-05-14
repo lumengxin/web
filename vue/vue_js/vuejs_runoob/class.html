@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-样式绑定</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<style>
+	.active {
+		width: 100px;
+		height: 100px;
+		background: green;
+	}
+	.text-danger {
+		background: red;
+	}
+	</style>
+	</head>
+	
+	<body>
+		<h1>10.vuejs样式绑定</h1>
+		<p>class与style是html元素的属性，用于设置样式，可以用v-bind来设置样式属性。</p>
+		<p>v-bind在处理class和style时，专门增强了他。表达式的结果类型除了字符串，还可以是对象或数组。</p>
+
+
+		<h2>10.1class属性绑定</h2>
+		<strong><em>v-bind:class设置对象，从而动态的切换class:</em></strong>
+		<div id="app">
+			<div class="static"
+				v-bind:class="{ active: isActive, 'text-danger': hasError }">
+			</div>
+		</div>
+		<strong><em>也可以直接绑定数据里的对象:</em></strong>
+		<div id="app2">
+			<div v-bind:class="classObject"></div>
+		</div>
+		<strong><em>可以把一个数组给v-bind:class:</em></strong>
+		<p>
+		<span><</span>
+		<span>div</span>
+		<span>v-bind:class="[activeClass, errorClass]"></span>
+		<span><</span>
+		<span>/div></span>
+		</p>
+		<p>
+		<pre>
+			...
+			data: {
+				activeClass: 'active',
+				errorClass: 'text-danger'
+			}
+			...
+		</pre>
+		</p>
+		
+		<h2>10.2style（内联样式）</h2>
+		<p>v-bind:style直接设置样式:</p>
+		<div id="app3">
+			<div v-bind:style="{ color:activeColor, fontSize:fontSize + 'px'}">style直接样式</div>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					isActive: true,
+					hasError: true
+				}
+			});
+			new Vue({
+				el: '#app2',
+				data: {
+					classObject: {
+						active: true,
+						'text-danger': true					
+					}
+				}
+			});
+			new Vue({
+				el: '#app3',
+				data: {
+					activeColor: 'green',
+					fontSize: 30
+				}
+			})
+		</script>
+		
+	</body>
+</html>
+
+

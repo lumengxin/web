@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vuejs.org教程（2.x）- 基础</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<h1>1.基础-介绍-声明式渲染</h1>
+		<div id="app">
+			<span v-bind:title="message">
+				鼠标在此处悬停几秒查看动态绑定的信息</span>
+		</div>
+
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: '页面加载于 ' + new Date().toLocaleString()
+			}
+		});
+	</script>
+	</body>
+</html>

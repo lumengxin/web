@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-计算属性</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>8.vuejs计算属性</h1>
+
+		<h2>8.1computed</h2>
+		<strong>处理复杂的逻辑</strong>
+		<div id="app">
+			<p>原始字符串:{{ message }}</p>
+			<p>计算反转后的字符串:{{ reversedMessage }}</p>
+		</div>
+		
+		<h2>8.2computed vs methods</h2>
+		<em>methods可以代替computed,效果一样。</em>
+
+		<h2>8.3computed setter</h2>
+		<b>computed属性默认只有getter,不过需要时也可以提供一个setter</b>
+		<div id="app2">
+			<p>{{ site }}</p>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					message: 'xiaoxin'
+				},
+				computed: {
+					//计算属性的getter
+					reversedMessage: function() {
+						//this指向vm实例
+						return this.message.split('').reverse().join('')
+					}
+				}
+			})
+			var rm = new Vue({
+				el: '#app2',
+				data: {
+					name: 'Google',
+					url: 'http://www.google.com'
+				},
+				computed: {
+					site: {
+						//getter
+						get: function() {
+							return this.name + ' ' + this.url
+						},
+						//setter
+						set: function(newValue) {
+							var names = newValue.split(' ')
+							this.name = names[0]
+							this.url = names[names.length-1]
+						}
+					}
+				}
+			})
+			//调用setter, rm.name和rm.url也会被对应更新
+			vm.site = '菜鸟教程 http://www.runoob.com';
+			document.write('name: ' + vm.name);
+			document.write('<br>');
+			document.write('url: ' + vm.url);
+		</script>
+		
+	</body>
+</html>
+
+

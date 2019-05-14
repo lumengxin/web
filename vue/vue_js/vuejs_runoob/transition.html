@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-过渡&动画</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+		<style>
+		/* 可以设置不同的进入和离开动画 */
+		/* 设置持续时间和动画函数 */
+		.slide-fade-enter-active {
+		  transition: all .3s ease;
+		}
+		.slide-fade-leave-active {
+		  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+		}
+		.slide-fade-enter, .slide-fade-leave-to
+		/* .slide-fade-leave-active 用于 2.1.8 以下版本 */ {
+		  transform: translateX(10px);
+		  opacity: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>16.vuejs过渡&动画</h1>
+
+		<h2>16.1过渡</h2>
+		<p>vue在插入，更新或者移除DOM时，提供多种不同方式的应用过渡效果。</p>
+		<p>vue提供了内置的过渡封装组件，用于包裹要实现过渡效果的组件。</p>
+		<h3>16.1.1语法格式：</h3>
+		<xmp>
+			<transition name="nameoftransition">
+				<div></div>
+			</transition>
+		</xmp>
+		<strong>实例：</strong>
+		<div id="databinding">
+			<button v-on:click = "show = !show">点我</button>
+			<transition name= "fade">
+				<p v-show = "show" v-bind:style= "styleobj">动画实例</p>
+			</transition>
+		</div>
+		<p>过渡其实就是一个淡入淡出的效果。Vue在元素显示与隐藏的过渡中，提供了 6 个 class 来切换：</p>
+		<ul>
+			<li>定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。</li>
+			<li>定义进入过渡生效时的状态。</li>
+			<li>2.1.8版及以上 定义进入过渡的结束状态。</li>
+			<li>定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。</li>
+			<li>定义离开过渡生效时的状态。</li>
+			<li>2.1.8版及以上 定义离开过渡的结束状态。</li>
+		</ul>
+		<h3>16.1.2CSS过渡</h3>
+		<p>通常我们使用css过渡来实现效果。</p>
+		<strong>实例：</strong>
+		<div id = "databinding2">
+			<button v-on:click = "show = !show">点我</button>
+			<transition name="slide-fade">
+			    <p v-if="show">hello</p>
+			</transition>
+		</div>
+		<h3>16.1.3CSS动画</h3>
+		<p>CSS 动画用法类似 CSS 过渡，但是在动画中 v-enter 类名在节点插入 DOM 后不会立即删除，而是在 animationend 事件触发时删除。</p>
+		<h3>16.1.4自定义过渡的类名</h3>
+		<p>我们可以通过以下特性来自定义过渡类名：</p>
+		<ul>
+			<li>enter-class</li>
+			<li>enter-active-class</li>
+			<li>...</li>
+		</ul>
+		<h3>同时使用过渡和动画</h3>
+		<h3>显示的过渡持续时间</h3>
+		<p><span><</span>transition: duration="1000">...<span><</span>/transition></p>
+		<p><span><</span>transition: duration="{enter: 500, leave: 800}">...<span><</span>/transition></p>
+
+		<h2>16.2JavaScript钩子</h2>
+		<p>一个使用Velocity.js的简单例子：</p>
+		<div id = "databinding3">
+			<button v-on:click = "show = !show">点我</button>
+			<transition
+			    v-on:before-enter="beforeEnter"
+			    v-on:enter="enter"
+			    v-on:leave="leave"
+			    v-bind:css="false"
+			  >
+			    <p v-if="show">菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+			</transition>
+		</div>
+
+		<h2>16.3初始渲染的过渡</h2>
+		<p>可以通过apper特性设置节点在初始渲染的过渡</p>
+		<p><span><</span>transition appear>...<span><</span>/transition></p>
+
+		<script>
+			var vm = new Vue({
+				el: '#databinding',
+				data: {
+					show: true,
+					styleobj: {
+						fontSize: '30px',
+						color: 'red'
+					}
+				},
+				methods: {
+
+				}
+			})
+
+			new Vue({
+			    el: '#databinding2',
+			    data: {
+			        show: true
+			    }
+			})
+
+			new Vue({
+			  el: '#databinding3',
+			  data: {
+			    show: false
+			  },
+			  methods: {
+			    beforeEnter: function (el) {
+			      el.style.opacity = 0
+			      el.style.transformOrigin = 'left'
+			    },
+			    enter: function (el, done) {
+			      Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+			      Velocity(el, { fontSize: '1em' }, { complete: done })
+			    },
+			    leave: function (el, done) {
+			      Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+			      Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+			      Velocity(el, {
+			        rotateZ: '45deg',
+			        translateY: '30px',
+			        translateX: '30px',
+			        opacity: 0
+			      }, { complete: done })
+			    }
+			  }
+			})
+		</script>
+		
+	</body>
+</html>
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>vuejs-条件与循环</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<h1>6.vuejs条件与循环</h1>
+
+		<h2>6.1条件判断</h2>
+		<h3>v-if</h3>
+		<div id="app1">
+			<p v-if="seen">现在你看到了我</p>
+			<template v-if="ok">
+				<p>技术不仅仅是技术</p>
+			</template>
+		</div>
+		<h3>v-else</h3>
+		<div id="app2">
+			<div v-if="Math.random()>0.5">Sorry</div>
+			<div v-else>
+				Not sorry
+			</div>
+		</div>
+		<h3>v-else-if</h3>
+		<div id="app3">
+			<div v-if="type === 'A'">A</div>
+			<div v-else-if="type === 'B'">B</div>
+			<div v-else-if="type === 'C'">C</div>
+			<div v-else>Not A/B/C</div>
+		</div>
+		<h3>v-show</h3>
+		<div id="app4">
+			<p v-show="ok">v-show,hello</p>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app1',
+				data: {
+					seen: true,
+					ok: true
+				}
+			})
+			new Vue({
+				el: '#app2'
+			})
+			new Vue({
+				el: '#app3',
+				data: {
+					type: 'C'
+				}
+			})
+			new Vue({
+				el: '#app4',
+				data: {
+				 ok: true
+				}
+			})
+		</script>
+		
+	</body>
+</html>
+
+
