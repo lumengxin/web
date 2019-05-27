@@ -1,0 +1,32 @@
+											ES6
+#Bable:is a javascript compiler
+	(https://babeljs.io)
+	 将es6中部分浏览器不支持的新特性代码编译成支持的
+	环境搭建：mkdir babel; cd babel;
+						npm init; npm install --save-dev babel-cli babel-preset-env
+						+ babel-cli@6.26.0
+						+ babel-preset-env@1.7.0
+	使用：./node_modules/.bin/babel index.js -o bundle.js
+	配置："compiler" : "babel index.js -o bundle.js",
+				npm run compiler
+				npm run start //运行index.js
+				npm bundle.js //运行bundel.js
+#let+const
+	let作用域只在该代码段起作用
+--------------------vue响应式----------------------
+1 响应式原理
+	vue是非入侵响应式系统。数据模型为js对象，修改则视图更新。
+	所有的响应式属性必须在data中声明。
+	例：vm.a.f = 20 非响应
+			Vue.set(vm.a,'d',20) 响应式 'd':20
+			或者 vm.$set(vm.a,'s',20)
+			或者 vm.a = Object.assign({},vm.a,{h:20})
+
+2 组件的transition过渡
+	动态的改变类
+	<!-- 右键元素‘检查’
+    Console:
+    > $0;
+    < <div class=​"panel enter">​…​</di			v>​
+    > $0.classList.add('enter-to') -->
+	

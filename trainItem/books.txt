@@ -1,0 +1,83 @@
+				题目 vue.js2和firebase - 构建实时单页web应用程序
+1.来源：https://youtu.be/we4zuQIXmnw
+
+2.目的：使用firebase实时数据库作为后端，利用vue实现一个单页书籍列表简单的小应用程序
+
+3.工具：
+	*firebase:https://console.firebase.google.com/
+	*vue.js2
+	*bootstrap:cnd直接引用
+	*toastr
+
+4.步骤：
+	4.1 数据库配置：
+	firebase官网注册->创建项目->进入点击database->创建books表->添加字段
+	4.1 前端开发：
+	（1）创建：
+	  vue init webpack vue2-books-page;(vue3需要安装 sudo npm install -g @vue/cli-init)
+		cd vue2-books-page;
+		npm install;
+		npm install firebase vuefire --save;
+		```
+		+ vuefire@1.4.5
+		+ firebase@6.0.2
+		run `npm audit fix` to fix them
+		```
+		code . / subl .;
+	（2）过程：
+		4.2.1
+		```main.js
+		import VueFire from 'vuefire'
+		
+		Vue.use(VueFire)
+		```
+		```App.vue
+		删除hello相关
+		<template>
+			<div id="app" class="container">
+				<div class="page-header">
+					<h1>vue.js2 $ firebase sample application</h1>
+				</div>
+
+			</div>
+
+		</template>
+
+		<script>
+		import Firebase from 'firebase'
+
+		//定义配置对象，访问firebase数据库
+		let config = {   //firebase项目->Overvuew->网页SDK
+			apiKey: "AIzaSyDReJl6R7xAh_OczlKGq6Y5LcQM65XCWhw",
+			authDomain: "vue2-books-page.firebaseapp.com",
+			databaseURL: "https://vue2-books-page.firebaseio.com",
+			projectId: "vue2-books-page",
+			storageBucket: "vue2-books-page.appspot.com",
+			messagingSenderId: "287805183622",
+			appId: "1:287805183622:web:2bac7ca7fb14a0cc"
+		}
+		let app = Firebase.initializeApp(config);
+		let db = app.datebase();
+
+		//获得books节点
+		let bookRef = db.ref('books');
+
+		firebase: {
+			books: booksRef		
+		}
+		......
+		```
+		```index.html
+		引入bootstrap
+		cdn:
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		```
+
+问题：
+1.无数据：
+firebase提供了两种数据库模式，默认的是cloud,本次使用是realtime,从sdk中databaseURL中可以知道。
+2.访问拒绝：
+将realtiem中rules权限设置为‘true’。

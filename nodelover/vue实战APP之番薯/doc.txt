@@ -1,0 +1,92 @@
+#课题：使用Vue,Vuex,VueRouter开发多人博客应用
+
+##一 实验介绍
+	1.1 实验内容
+	采用Vue,Vuex,VueRoute以及一些组件库开发一个单页多人博客应用，后端使用LeanCloud的存储服务。
+
+	1.2 实验知识点
+	$ 了解Vue Vuex VueRouter的实际开发
+	$ LeanCloud JS SDK的使用
+	$ LeanCloud 云引擎的持续集成、自动部署配置
+	$ Koa如何部署到LeanColud上
+
+	1.3 实验环境
+	$ Node.js
+	$ Sublime Text等编辑器
+
+	1.4 适合人群
+	本课程难度适中，适合Vue入门人员
+
+	1.5 代码获取
+	$ 可以通过下面命令将代码下载到实验环境中参照
+	  ```bash
+		$
+		```
+
+##二 实验原理
+	通过vue做事件、数据绑定
+	通过vuex管理用户的登录状态及全局数据
+	通过vueRouter来驱动不同的页面展示给用户
+	通过LeanCloud处理存储数据
+
+##三 开发准备
+	注册（https://leancloud.cn/）账号。进入到控制台新建应用，选择开发板，输入名称‘番薯’。在进入该应用中，点击‘设置’->应用key,并记住，当使用LeanCloud服务时，需要传给SDK
+
+##五 实验步骤
+	5.1 初始化项目
+	安装vue脚手架工具
+	```bash
+	npm install -g vue-cli
+	```
+	初始化项目
+	```bash
+	vue init webpack fanshu
+	```
+	---------------------------------------
+	教程环境：vue2
+	本地环境：vue3.7.0 node10.15.3 npm6.4.1
+						使用vue-cli2命令需要安装（sudo npm install -g @vue/cli-init）
+	---------------------------------------
+	5.2 安装其他
+	npm i vuex leancloud-storage -S
+	(+ vuex@3.1.1 + leancloud-storage@3.13.2)
+  ---------------------------------------
+	found 12 vulnerabilities (7 moderate, 5 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+  ---------------------------------------
+	到	leancloud官网中注册
+	新建src/store/index.js文件
+
+##六 开发步骤
+	6.1 进度条
+	6.1.1 (1)javaScript SDK安装
+	(官方sdk:https://leancloud.cn/docs/sdk_setup-js.html)
+	(存储功能:https;//leancloud.cn/docs/leanstorage_guide-js.html)
+	# 存储服务（包括推送）
+	$ npm install leancloud-storage --save
+	(+ leancloud-storage@3.13.2)
+	#  即时通讯服务
+	$ npm install leancloud-realtime --save
+	(+ leancloud-realtime@4.3.0)
+				(2)初始化：官网SDK引用
+	6.1.2 进度条安装
+	vue-progresbar(https://github.com/hilongjw/vue-progressbar)
+	$ npm install vue-progressbar -S	
+	6.2 导航栏
+	6.2.1 安装 npm i element-ui -S
+	+ element-ui@2.8.2
+	(http://element.eleme.io/#/zh-CN/component/installation)
+	6.3 登录页面
+	6.4 文章创建
+	富文本编辑器：(https://www.kancloud.cn/wangfupeng/wangeditor2/113961)
+
+
+
+
+	==============================出现的问题=========================
+	1.版本问题：使用vue-cli2命令 sudo npm install -g @vue/cli-init
+	2."Failed to mount component: template or render function not defined.":
+		解决：import Vue from "vue"; 改为 import Vue from "vue/dist/vue.common.js";（https://blog.csdn.net/zhangchao19890805/article/details/53367574
+	3.Module not found: Error: Can't resolve 'element-ui/lib/theme-default/index.css'
+	  解决：theme-default 改为 theme-chalk (node-module路径中)
+	

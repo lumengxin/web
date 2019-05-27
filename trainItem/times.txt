@@ -1,0 +1,68 @@
+         使用vuejs,es2015,webpack探索实时应用程序
+(https://blog.pusher.com/exploring-real-time-apps-with-vuejs-es2016-and-webpack/)
+
+1.vuejs:一个使用基于组件的方法构建web应用程序的框架，主要关注传统MVC的视图层。
+2.ECMAScript2015:Vue.js可以用ECMAScript 5编写，但为了获得最佳体验，建议编写ECMAScript6,可以使用该语言的一些强大的新功能编写一些更简洁的代码。
+3.WebPack:使用JavaScript应用程序并将其与所有依赖项捆绑在一起。可以将其配置为通过Babel运行所有文件。Babel将采用我们的ES6代码并将其转换为ES5，因此可以使用新功能编写，而无需担心浏览器支持。
+4.使用vuejs构建一个实时应用程序：利用Pusher Datasource API项目，该api允许在twitter中搜索特定术语，从twitter流媒体中获取新数据显示推文。
+(https://github.com/pusher-community/pusher-datasource-api)
+
+5.过程
+ 5.1 创建项目
+ 1) mkdir real_times_apps; cd ..;
+	  npm init -y; +package.json
+		npm install --save-dev webpack babel-loader babel-preset-es2015 babel-core live-server;
+		 *babel-loader 是Webpack的插件，它将其配置为通过Babel运行其所有文件。		 *babel-core 是Babel的核心项目。
+		 *babel-preset-es2015是一组Babel插件，配置Babel将ES6转换为ES5。
+		 *live-server 是一个服务器，它将在本地运行我们的应用程序，并在检测到更改时刷新。
+		+ live-server@1.2.1
+		+ babel-core@6.26.3
+		+ babel-loader@8.0.6
+		+ babel-preset-es2015@6.24.1
+		+ webpack@4.32.2
+		`npm audit fix`
+
+	配置Webpack来捆绑所有的JavaScript。创建webpack.config.js：..
+	 npm install --save vue; //安装vue
+	  + vue@2.6.10
+ 5.2 编写代码
+ 1）创建index.html
+  <!DOCTYPE html>
+	<html>
+		<head>
+			<title>Vue Twitter Streaming</title>
+		</head>
+		<body>
+			<div id="app">
+				<app-component></app-component>
+			</div>
+			<script src="bundle.js"></script>
+		</body>
+	</html>
+ 2）创建app/main.js
+  import Vue from 'vue';
+	import AppComponent from './components/app-component/app-component';
+
+	new Vue({
+		el: '#app',
+		components: {
+			'app-component': AppComponent
+		}
+	});
+ 3）创建app/components/app-componet/app-component.js
+	import Vue from 'vue';
+
+	const AppComponent = Vue.extend({
+		template: '<h1>Hello World</h1>',
+	});
+
+	export default AppComponent;
+ 4）运行:
+  webpack -w;  //生成bundle.js
+	(不能执行： //缺少webpack-cli npm install -D webpack-cli)
+	  启动：
+	./node_modules/.bin/live-server --port=3004
+	>Hello World（成功）
+ 
+
+

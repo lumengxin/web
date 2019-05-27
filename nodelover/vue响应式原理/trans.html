@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式原理</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+    <style>
+        .v-enter-active, .v-leave-active {
+            transition: opacity 2s;
+        }
+        .v-enter-to {
+            opacity: 1;
+            color: blue;
+        }
+        .v-enter, .v-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            color: red;
+            opacity: 0;
+        }  
+
+        .panel {
+            transition: all 2s;
+        }
+        .enter {
+            background: red;
+            width: 100px;
+        }
+        .enter-to {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 右键元素‘检查’
+    Console:
+    > $0;
+    < <div class=​"panel enter">​…​</div>​
+    > $0.classList.add('enter-to') -->
+    <div class="panel enter">
+        some one
+    </div>
+
+    <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="">
+            <p v-if="show">hello</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+</html>

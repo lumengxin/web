@@ -1,0 +1,99 @@
+                vue路由
+1.简单使用
+* vue-router2:vuejs官方路由管理器，让构建单页面更加容易。
+* 前端路由，可以回退
+* 初始化项目：
+  //Dawn(dn):阿里云内部的前端构建和工程化工具。
+  //安装:(sudo) npm install dawn -g;
+  mkdir vue-rout; cd vue-rout;
+	dn init;
+	dn dev;
+2.动态路由:
+```index.js
+import Router from 'vue-router'
+Vue.use(Router);  //install $router $route
+
+//定义一个组件
+const PureComponent = {
+  name: 'VText',
+  render(h) {
+    return h('h1', null, "hello")
+  }
+}
+//localhost:38187/#/to
+const PureComponent2 = {
+  name: 'VText2',
+  // render(h) {
+  //   return h('h1', null, "hello2")
+  // },
+  //必须<div>包裹
+  template: `
+    <div>
+    <h2>VText2</h2>
+    <router-view></router-view>
+    </div>
+  `,
+  //动态路由
+  created() {
+    console.log(this.$route)
+    //this.$router.push()
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log(to)
+    console.log(from)
+    next()
+  },
+  beforeRouteUpdate(to, from, next) {
+    next()
+  },
+  beforeRouteLeave(to, from, next) {
+    next()
+  }
+}
+
+const Tip = {
+  template: '<div>this is tips</div>'
+}
+
+const OP = {
+  template: '<div>this is ops</div>'
+}
+
+const router = new Router({
+  routes: [
+    { path: '/', name: 'home', component: PureComponent},
+    {
+      path: '/to/:id', //动态路由
+      name: 'sss',
+      component: PureComponent2,
+      //嵌套路由
+      children: [
+        {
+          path: '',
+          component: Tip,
+        },
+        {
+          path: 'op',
+          component: OP
+        }
+      ]
+
+    }
+  ]
+})
+```
+```App.vue
+<router-link to="/">home</router-link>
+<router-link :to="{ name: 'sss', params: {
+	id: 2
+},query: {b:3} }">to</router-link>
+<router-view></router-view>
+```
+```新建webpack.config.js:解决嵌套路由报错
+module.exports = function(configs, webpack, ctx) {
+    configs.resolve = {};
+    configs.resolve.alias = {
+        'vue$': 'vue/dist/vue.esm.js'
+    }
+};
+```

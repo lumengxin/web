@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式原理</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ a }}
+    </div>
+
+    <script>
+        window.vm = new Vue({
+            el: '#app',
+            data: {
+                a: {
+                    b: 1,
+                    c: 2
+                }
+            }
+        });
+        console.log(vm);
+
+        // function Observe(obj) {
+        //     for(let key in obj) {
+        //         let old = obj[key];
+        //         //mdc js文档中 
+        //         Reflect.defineProperty(obj, key, {
+        //             get: () => {
+        //                 console.log("get " + key);
+        //                 return old;
+        //             },
+        //             set: (newVal) => {
+        //                 console.log("set " + key + "is " + old);
+        //                 //视图更新逻辑
+        //                 //event.emit('update', newVal)
+        //                 setTimeout(() => {
+        //                     old = newVal;
+        //                     console.log("视图更新已经完成");
+        //                 }, 1000)  //1s 模拟视图更新
+        //             }
+        //         })
+        //     }
+        // };
+        // let a = {
+        //     b: 2,
+        //     c: 3
+        // }
+        // Observe(a);
+        // a.b = 20;   //调用set方法
+        // console.dir(a);
+
+        // console.log(a.b);
+        // setTimeout(() => {
+        //     console.log(a.b)
+        // }, 1050);
+    </script>
+</body>
+</html>

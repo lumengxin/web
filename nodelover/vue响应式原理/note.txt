@@ -1,0 +1,31 @@
+                  vue响应式原理与动画(高级进阶第一课)
+1 响应式原理
+	vue是非入侵响应式系统。数据模型为js对象，修改则视图更新。
+	所有的响应式属性必须在data中声明。
+	例：vm.a.f = 20 非响应
+			Vue.set(vm.a,'d',20) 响应式 'd':20
+			或者 vm.$set(vm.a,'s',20)
+			或者 vm.a = Object.assign({},vm.a,{h:20})
+
+2 组件的transition过渡
+	动态的改变类
+	<!-- 右键元素‘检查’
+    Console:
+    > $0;
+    < <div class=​"panel enter">​…​</di			v>​
+    > $0.classList.add('enter-to') -->
+
+ 组件的animation动画
+
+ 自定义过渡class
+
+ 过渡时间
+
+ js实现动画
+
+ 元素过渡与过渡模式
+
+ 组件过渡
+
+ 标签动画
+
