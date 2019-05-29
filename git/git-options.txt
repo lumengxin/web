@@ -1,20 +1,28 @@
-1.Git��¡�����ļ�
-  ʵ�����Կ�¡��Դ��Ŀweb��/web/webpackĿ¼Ϊ����
+1.Git克隆部分文件
+  实例：以克隆开源项目web下/web/webpack目录为例。
 $ mkdir web
 $ cd web
 
-$ git init // ��ʼ���ղֿ�
+$ git init // 初始化空仓库
 
-$ git remote add -f origin https://github.com/lumengxin/web.git// ����Զ�̵�ַ
+$ git remote add -f origin https://github.com/lumengxin/web.git// 关联远程地址
 
-$ git config core.sparsecheckout true // ����Sparse Checkoutģʽ
+$ git config core.sparsecheckout true // 开启Sparse Checkout模式
 
-,������¡��Ŀ¼
-$ echo "web/webpack" >> .git/info/sparse-checkout // ������Check Out���ļ�
+,允许克隆子目录
+$ echo "web/webpack" >> .git/info/sparse-checkout // 设置需Check Out的文件
 
 $ git pull origin master / git checkout master
-  ���裺
-1��ָ��Զ�ֿ̲�
-2��ָ����¡ģʽ: ϡ���¡ģʽ
-3��ָ����¡���ļ���(�����ļ�)
-4����ȡԶ���ļ�
+  步骤：
+1）指定远程仓库
+2）指定克隆模式: 稀疏克隆模式
+3）指定克隆的文件夹(或者文件)
+4）拉取远程文件
+
+2.删除git项目中的文件
+*github官网中进入项目子文件，点击删除按钮
+*远程：$ git --help # 帮助命令
+$ git pull origin master # 将远程仓库里面的项目拉下来
+$ git rm -r --cached target  # 删除target文件夹
+$ git commit -m '删除了target' # 提交,添加操作说明
+$ git push -u origin master # 将本次更改更新到github项目上去

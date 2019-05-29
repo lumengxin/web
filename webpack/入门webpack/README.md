@@ -20,3 +20,19 @@
  4.3
  
 
+
+================================问题================================
+1. webpack命令一直提示安装webpack-cli:
+*webpack4最新文档，建议每个项目都是用单独的webpack，也就是局部安装。这样一个项目中的package.json都能管理好依赖的环境包了。
+npm init -y
+npm install webpack -D
+npm install webpack-cli -D
+写好webpack配置文件后，打包命令:
+npx webpack
+全局的webpack也是可行的。只是如果项目拷贝到别人的电脑上，不能保证webpack是统一版本了。
+*webpack 4X 后需要安装webpack-cli 请注意需要安装在同一目录
+npm install --save-dev webpack -g
+npm install --save-dev webpack-cli -g
+
+
+
