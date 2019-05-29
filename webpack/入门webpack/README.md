@@ -12,7 +12,7 @@
 4.使用
  4.1 npm安装：
 	sudo npm install -g webpack(全局安装)
-	npm install --save-dev webpack(项目中安装)
+	npm install --save-dev webpack(安装到项目)
  4.2 项目中创建package.json文件，标准的npm说明文件，里面蕴含了丰富的信息，包括当前项目的依赖模块，自定义的脚本任务等等。
 	mkdir webpack-demo; cd webpack-demo;  //新建项目
   npm init;  //自动生成package.json
@@ -34,5 +34,8 @@ npx webpack
 npm install --save-dev webpack -g
 npm install --save-dev webpack-cli -g
 
-
+2. webpack main.js bundle.js报错
+>RROR in multi ./app/main.js public/bundle.js
+Module not found:...
+ webpack版本高：webpack main.js -o bundle.js
 
