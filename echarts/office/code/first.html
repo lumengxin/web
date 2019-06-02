@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速上手echarts</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.js"></script>
+    <!-- <script src="echarts.min.js"></script> -->
+</head>
+<body>
+    <div class="install">
+        <h2>获取echarts</h2>
+        <ul>
+            <li>官网下载</li>
+            <li>github</li>
+            <li>npm install echarts --save</li>
+            <li>cdn引入</li> 
+        </ul>
+    </div>
+    <div class="pain">
+        <h2>绘制一个简单的图表</h2>
+        <div id="main" style="width: 600px; height: 400px;"></div>
+    </div>
+    <script>
+        //xAxis,yAxis,series三个参数必须配置
+        //初始化对象之前必须有宽高
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var option = {
+            title: {
+                text: 'echarts入门实例'  //标题
+            },  
+            tooltip: {
+
+            },       //鼠标悬停的提示内容，默认值
+            legend: {          //图标
+                data: ['销量']
+            },
+            xAxis: {           //x轴
+                data: ["a","b","c","d"]
+            },
+            yAxis:{},          //y轴
+            series: [{         //系列列表。每个系列通过 type 决定自己的图表类型
+                name: "销量",
+                type: 'bar',
+                data: [3,4,4,2]
+            }]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

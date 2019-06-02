@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.js"></script>
+    <title>自定义构建</title> 
+</head>
+<body>
+    <div class="contains">
+        <h2>自定义构建</h2>
+        <ul>
+            <ol>在线自定义构建</ol>
+            <ol>用echarts/build/build.js脚本</ol>
+            <ol>使用构建工具webpack,rollup</ol>
+        </ul>
+        <p>步骤：</p>
+        <li>创建工程</li>
+        <li>初始化：npm init; npm install echarts --save</li>
+        <li>使用ES Module: import * as echarts from 'echarts'</li>
+        <li>构建：node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echarts.custom.min.js</li>
+    </div>
+    
+    <div class="pie">
+        <h2>绘制饼图</h2>
+        <div id="main" style="width: 600px;height:400px;">
+
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
