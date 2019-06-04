@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    
+    <title>router</title>
+</head>
+<body>
+    <div id="app">
+        <h1>vue router start</h1>
+        <p>
+            <router-link to="/home">home</router-link>
+            <router-link to="/mine">mine</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // export default {
+        //     computed: {
+        //         username() {
+        //             return this.$router.params.username
+        //         }
+        //     },
+        //     methods: {
+        //         goBack() {
+        //             window.history.length > 1
+        //             ? this.$router.go(-1)
+        //             :this.$router.push('/')
+        //         }
+        //     }
+        // }
+        const Home = { template: '<div>go to home</div>' }
+        const Mine = { template: '<div>go to mine</div>' }
+
+        const routes = [
+            {
+                path: '/home',
+                component: Home
+            },
+            {
+                path: '/mine',
+                component: Mine
+            }
+        ]
+
+        const router = new VueRouter({
+            routes
+        })
+
+        const app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>
