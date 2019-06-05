@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //document.write(new Date())
+        // setInterval(() => {
+        //     document.querySelector('body').innerText = new Date()
+        // }, 1000)
+        function say() {
+            alert("hello")
+        }
+
+        const h1 = document.createElement('h1')
+        const text = document.createTextNode('this is h1')
+        h1.onclick = say
+        h1.appendChild(text)
+        document.body.appendChild(h1)
+        setTimeout(() => {
+            h1.innerText = '1234'
+            h1.style.color = 'red'  
+            h1.style.backgroundColor = 'green'
+        }, 2000)
+    </script>
+</body>
+</html>
