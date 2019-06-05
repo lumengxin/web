@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contains">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3">
+            <p>afdfijoeifoejfioasdjfsijeiefjafjoeifjlaf
+                jeoijfoeijfdlsjfoijfoijefadls
+            </p>
+        </div>
+    </div>  
+
+    <style>
+        .contains {
+            display: inline-flex;
+            
+        }
+        .box {
+            margin: 0px 20px;
+        }
+        .box1 {
+            background: #349;
+            width: 200px;
+            height: 200px;
+            box-shadow: 1px 2px 10px #000;
+        }
+        .box2 {
+            background: rgb(16, 109, 109);
+            width: 200px;
+            height: 200px;
+        }
+        .box3 {
+            background: rgb(145, 224, 17);
+            width: 200px;
+            height: 200px;
+        }
+        .box3 > p {
+            word-wrap: break-word;
+        }
+    </style>
+</body>
+</html>
