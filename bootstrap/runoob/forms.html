@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bootstrap4 表单控件</h1>
+    <ul>
+        <li>input</li>
+        <li>textarea</li>
+        <li>checkbox</li>
+        <li>radio</li>
+        <li>select</li>
+    </ul>
+    <div class="container">
+        <h2>Input</h2>
+        <p>Bootstrap 支持所有的 HTML5 输入类型: text, password, datetime, datetime-local, date, month, time, week, number, email,
+            url, search, tel, 以及 color。</p>
+        <form>
+            <div class="form-group">
+                <label for="usr">用户名：</label>
+                <input type="text" class="form-control" id="usr">
+            </div>
+            <div class="form-group">
+                <label for="pwd">密码：</label>
+                <input type="password" class="form-control" id="pwd">
+            </div>
+        </form>
+        <h2>Textarea</h2>
+        <form action="">
+            <lable for="comment">评论：</lable>
+            <textarea name="comment" id="comment" cols="50" rows="10" class="for-control"></textarea>
+        </form>
+        <h2>Checkbox</h2>
+        <form>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 1
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">Option 2
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="" disabled>Option 3
+                </label>
+            </div>
+        </form>
+        <h2>Radio</h2>
+        <form>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 1</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 2</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="optradio" disabled>Option 3</label>
+            </div>
+        </form>
+        <h2>Select</h2>
+        <form>
+            <div class="form-group">
+                <label for="sel1">下拉菜单:</label>
+                <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+        </form>
+        <br/><br/>
+        <h2>输入框添加按钮组</h2>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Basic Button</button>
+            </div>
+            <input type="text" class="form-control" placeholder="Some text">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="input-group-append">
+                <button class="btn btn-success" type="submit">Go</button>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Something clever..">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">OK</button>
+                <button class="btn btn-danger" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

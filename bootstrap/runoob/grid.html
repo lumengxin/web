@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Bootstrap4 网格系统</h2>
+    <p>Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多 12 列。</p>
+    <p> Bootstrap 4 现在使用 flexbox（弹性盒子） 而不是浮动。 Flexbox 的一大优势是，没有指定宽度的网格列将自动设置为等宽与等高列 。 </p>
+    <h2>网格类：</h2>
+    <ul>
+        <li>.col- 针对所有设备</li>
+        <li>.col-sm- 平板 - 屏幕宽度等于或大于 576px</li>
+        <li>.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</li>
+        <li>.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</li>
+        <li>.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</li>
+    </ul>
+
+    <h3>1.控制列的宽度及在不同的设备上如何显示 </h3>
+    <div class="row">
+        <div class="col-*-*">控制列的宽度及在不同的设备上如何显示</div>
+    </div>
+    <div class="row">
+        <div class="col-*-*">控制列的宽度及在不同的设备上如何显示</div>
+        <div class="col-*-*">控制列的宽度及在不同的设备上如何显示</div>
+        <div class="col-*-*">控制列的宽度及在不同的设备上如何显示</div>
+        <div class="col-*-*">控制列的宽度及在不同的设备上如何显示</div>
+    </div>
+    <h3>2.让 Bootstrap 自动处理布局</h3>
+    <div class="row">
+        <div class="col">让 Bootstrap 自动处理布局</div>
+        <div class="col">让 Bootstrap 自动处理布局</div>
+        <div class="col">让 Bootstrap 自动处理布局</div>
+    </div>
+    <h3>3.创建相等宽度的列，Bootstrap 自动布局</h3>
+    <div class="row">
+        <div class="col">.col</div>
+        <div class="col">.col</div>
+        <div class="col">.col</div>
+    </div>
+    <h3>4.等宽响应式列(12/3=4列)</h3>
+    <div class="row">
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+    </div>
+    <h3>5.不等宽响应式列</h3>
+    <div class="row">
+        <div class="col-sm-4" style="background-color: aqua;">.col-sm-4</div>
+        <div class="col-sm-8" style="background-color: blueviolet;">.col-sm-8</div>
+    </div>
+    <h3>6.平板和桌面端</h3>
+    <p>在桌面设备的显示器上两个列的宽度各占 50%，如果在平板端则左边的宽度为 25%，右边的宽度为 75%, 在移动手机等小型设备上会堆叠显示。</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-6">
+            <p>RUNOOB</p>
+            </div>
+            <div class="col-sm-9 col-md-6">
+            <p>菜鸟教程</p>
+            </div>
+        </div>
+    </div>
+    <h3>7.偏移列</h3>
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+    </div>
+</body>
+</html>

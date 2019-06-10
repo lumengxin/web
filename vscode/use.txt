@@ -5,7 +5,8 @@
   Ctrl+Enter 在当前行之后插入一行 Ctrl+Shift+Enter	在行之前插入一行
   Alt+Up/Down(上下箭头)	移动当前行上下 Shift+Alt+Up/Down	在当前行上下复制当前行
   Ctrl+Up/Down	行视图上下偏移  Alt+PageUp/PageDown	屏视图上下偏移
-  Ctrl+/	添加关闭注释   Alt+Z	添加关闭自动换行
+  Ctrl+/	添加关闭注释   shift+alt+a  块代码注释
+  Alt+Z	添加关闭自动换行
 
   1.2 导航：
   Ctrl+T	启动符号搜索框(#)  Ctrl+G	跳转行(:)
@@ -94,11 +95,31 @@
   你无需离开编辑器，便可以打开 SVG 文件并查看它们。同时，它
   还包含了用于转换为 PNG 格式和生成数据 URI 模式的选项
 
+  2.9 vim
+  ctrl+shift+x 打开扩展 搜索vim安装
+  安装失败 ：Cannot read property 'local' of undefined
+  	按提示下载.vsix并安装
+  ctrl+shift+p 输入settings 选open setting配置 将官方默认配置复制粘贴
+    （https://code.visualstudio.com/docs/getstarted/settings）
+  	user settings中： "vim.easymotion":true,
+  	"vim.leader":"<space>",
+  光标快速跳转
+    快速定位到行首（注：<leader> 表示上面设置的空格键）
+		<leader> + <leader> j，定位光标以下的行首
+		<leader> + <leader> k，定位光标以上的行首
+	快速定位单词首
+		<leader> + <leader> w，定位光标后面的单词首
+		<leader> + <leader> b，定位光标前面的单词首
+	快速定位单词尾
+		<leader> + <leader> e，定位光标后面的单词尾
+		<leader> + <leader> ge，定位光标前面的单词尾
+  常用命令：esc: normal模式（命令） i/a: inter模式（编辑）
+    （https://www.cnblogs.com/moiyer/archive/2010/04/01/1952681.html）
 
-  
 
 
 
-  
-  
-  
+
+3.常用操作：
+  3.1代码格式化：ctrl+k ctrl+f(js，html); shift+alt+f(js,vue...)
+  	 https://vimsky.com/article/3566.html

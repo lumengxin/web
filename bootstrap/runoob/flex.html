@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Bootstrap 4 Flex（弹性）布局</h1>
+    <div class="container">
+        <h2>弹性盒子</h2>
+        <div class="d-flex d-inline-flex p-3 bg-secondary text-white">
+            <div class="p-2 bg-info">flex item1</div>
+            <div class="p-2 bg-warning">flex item2</div>
+            <div class="p-2 bg-primary">flex item3</div>
+        </div>
+        <h2>内容排列方式</h2>
+        <p> .justify-content-* 类用于修改弹性子元素的排列方式，* 号允许的值有：start (默认), end, center, between 或 around:</p>
+        <div class="d-flex justify-content-start bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+        <div class="d-flex justify-content-end bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+        <div class="d-flex justify-content-center bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+        <div class="d-flex justify-content-between bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+        <div class="d-flex justify-content-around bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+        <h2>等宽</h2>
+        <p>.flex-fill 类强制设置各个弹性子元素的宽度是一样的:</p>
+        <div class="d-flex mb-3">
+            <div class="p-2 flex-fill bg-info">Flex item 1</div>
+            <div class="p-2 flex-fill bg-warning">Flex item 2</div>
+            <div class="p-2 flex-fill bg-primary">Flex item 3</div>
+        </div>
+        <h2>扩展</h2>
+        <p>.flex-grow-1 用于设置子元素使用剩下的空间：</p>
+        <div class="d-flex mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 flex-grow-1 bg-primary">Flex item 3</div>
+        </div>
+        <h2>排序</h2>
+        <p>.order 类可以设置弹性子元素的排序，从 .order-1 到 .order-12，数字越低权重越高:</p>
+        <div class="d-flex mb-3">
+            <div class="p-2 order-3 bg-info">Flex item 1</div>
+            <div class="p-2 order-2 bg-warning">Flex item 2</div>
+            <div class="p-2 order-1 bg-primary">Flex item 3</div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

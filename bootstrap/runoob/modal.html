@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bootstrap4 模态框</h1>
+    <p>模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息交互等。</p>
+    <div class="container">
+        <!-- 按钮：用于打开模态框 -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            打开模态框
+        </button>
+
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">模态框头部</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- 模态框主体 -->
+                    <div class="modal-body">
+                        模态框内容..
+                    </div>
+
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <p>-------------------------------------------------------------------------------</p>
+        <!-- 安装bootstrap插件 输入modal快速生成 -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+          Launch
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            Add rows here
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            $('#exampleModal').on('show.bs.modal', event => {
+                var button = $(event.relatedTarget);
+                var modal = $(this);
+                // Use above variables to manipulate the DOM
+                
+            });
+        </script>
+    </div>
+</body>
+
+</html>

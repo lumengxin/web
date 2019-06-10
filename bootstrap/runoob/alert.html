@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bootstrap4 信息提示框</h1>
+    <p>使用 .alert 类, 后面加上 .alert-success, .alert-info, .alert-warning, .alert-danger,</p>
+    <h2>1.提示框添加链接</h2>
+    <div class="alert alert-success">
+        <strong>成功!</strong> 你应该认真阅读 <a href="#" class="alert-link">这条信息</a>。
+    </div>
+    <h2>2.关闭提示框</h2>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>成功!</strong> 指定操作成功提示信息。
+        <p class="small">提示: &times; (×) 是 HTML 实体字符，来表示关闭操作，而不是字母 "x"。</p>
+    </div>
+    <h2>3.提示框动画</h2>
+    <p>.fade 和 .show 类用于设置提示框在关闭时的淡出和淡入效果：</p>
+    <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>成功!</strong> 指定操作成功提示信息。
+    </div>
+    <div class="alert alert-info alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>信息!</strong> 请注意这个信息。
+    </div>
+
+</body>
+</html>
