@@ -123,3 +123,7 @@
 3.常用操作：
   3.1代码格式化：ctrl+k ctrl+f(js，html); shift+alt+f(js,vue...)
   	 https://vimsky.com/article/3566.html
+
+  3.2debug:
+  (http://shooterblog.site/2018/05/19/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E7%94%A8Vscode%20Debugger%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/#%E5%89%8D%E8%A8%80)
+  
