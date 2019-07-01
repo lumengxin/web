@@ -1,0 +1,14 @@
+                     TypeScript精通指南
+(https://nodelover.gitbooks.io/typescript/content/基础认知%201.html)
+1.代码提示
+    。安装：npm install -g typescript (ts-node); //ts-node 直接运行ts文件
+        npm i -g typescript ts-node;
+        + ts-node@8.3.0
+        + typescript@3.5.2
+    。baby.ts -> 编译 tsc baby.ts(baby.js) -> 运行 node baby.js
+              -> 运行ts ts-node baby.ts
+    
+2.基础类型1
+    。any, boolean, number, string,
+      void, never, Enum, Tuple, Array
+    。
