@@ -1,0 +1,9 @@
+             React基础
+1.创建项目：
+（react：facebook出品，解决单页面频繁操作dom,影响性能,使用虚拟dom操作代替）
+  1.1创建单页应用：
+  。使用create react app 官方脚手架工具,前提node>=6 npm>=5.2
+    npx create-react-app my-app;
+    cd my-app;
+    npm start;
+    
