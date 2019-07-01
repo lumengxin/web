@@ -1,0 +1,113 @@
+                          Nodejs1
+(javascript.ruanyifeng.com/nodejs/npm.html)
+1.nodejs
+    。Node.js：是一个能运行在服务器端的JavaScript的开放源代码、跨平台的JavaScript运行环境
+
+2.了解NPM
+    。nodejs包管理工具
+
+3.npm1（www.npmjs.com)
+    。常用命令：
+        npm i -g npm;  //更新
+        npm install npm@latest -g;  //@指定版本
+        npm -l;  //查看各个命令简单用法
+        npm config --help;  npm config list;  //配置
+        npm init;  //初始化，生成package.json
+
+        ```解决下载慢
+        npm i nrm -g;
+        nrm use taotao;  //nrm ls 查看更多源
+        ```
+
+4.npm2
+    。npm set;  //设置环境变量
+        npm set init-author-name 'xxx';
+        npm set init-licensse 'MIT';
+        (npm i lodash; // +node_modules/lodash;
+                          +package-lock.json; 服务器上具体版本)
+        npm set save-exact true; //确切版本 ^版本以上
+    。npm config;
+    。npm info;
+        npm info lodash;
+    。npm search <搜索词>;
+        npm search node-gyp;
+    。npm list; 
+    。npm install;
+        i : install 缩写
+        -g: 全局安装
+        --save：生产依赖(不写默认) -> dependencies 
+        --save-dev:开发依赖 缩写 -D -> devDependencies
+        npm install sax@latest; @0.1.1; @">=0.1.0 <0.2.0"; //不同版本
+        （show , info 查看版本)
+
+5.npm3
+    。避免系统权限：（sudo) npm i -g npm;
+        chown Yogo:admin -R ./node_modules; //更改用户权限
+        修改（新建）配置文件.npmrc   C:\Users\27351
+         prefix = /home/yourUsername/npm; 
+         mkdir ~/npm;
+         export PATH = ~/npm/bin:$PATH;
+
+6.npm4
+    。npm update; //更新
+        npm install -g npm-check-updates; //安装更新工具
+        ncu; //查看可以升级版本
+        ncu -u; //升级
+
+    。npm uninstall; / npm rm;
+    。npm run; //用于模块管理，执行脚本；“scripts”字段，用于指定脚本命令，供npm直接调用
+    (npm install -g live-server;
+     "strat": "live-servre .";  //node_modules/.bin -> 全局
+     npm run start / npm start;)
+        参数：npm run 命令可以添加参数
+            npm run test -- anotest.js
+            <=>mocha test/ anotest.js 
+
+7.npm5
+    。npm link; //可将全局安装的包链接到本地项目
+    。npm bin; //显示相对于当前目录的，node模块可执行脚本所在目录（.bin）
+      ./node_modules/.bin
+    。npm adduser;  //用于在npmjs.com注册用户，自由发布包
+      npm login;
+      npm publish; (--tag beta)
+
+8.node
+    。管理不同版本: npm i nvm -g; //全局安装nvm
+                   nvm install v12.4.0; //安装node12.4.0
+                   (权限不够，以`管理员运行ISE` +Creating C:\Program Files\nvm\temp)
+                   nvm use 10.16.0; 
+    。REPL环境：直接运行js
+        node； //进入交互界面
+        >const fs = require('fs');
+        >fs;
+
+9.buffer
+    。Buffer对象：node处理二进制数据的一个接口
+
+10.模块
+    。CommonJS规范：解决所有代码放到一个文件；
+        Node应用由模块组成，采用CommonJS模块规范
+    。module对象：Node内部提供Module构建函数，所有模块都是module实例
+    。ES6模块
+
+11.事件
+    。Event Emitter是一个接口，可以在任何对象上部署，由events模块提供
+    var EventEmitter = require('events').EventEmitter;
+    var emitter = new EventEmitter();
+    
+12.流
+    。stream:'数据流',处理系统缓存的一种方式;
+        暂停态 <-> 流动态
+
+13.fs模块
+    。文件管理；
+    。readFile(),异步读取数据
+      readFileSync()，同步读取数据
+    。writeFile(),writeFileSync()
+    
+14.Path模块
+    。处理文件路径
+    。path.join(),path.resolve(),
+
+
+

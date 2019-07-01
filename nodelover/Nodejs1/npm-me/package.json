@@ -1,0 +1,17 @@
+{
+  "name": "npm-me",
+  "version": "1.0.0",
+  "description": "a npm start project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'hello npm'",
+    "start": "live-server .",
+    "dev": "npm run test & npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "lodash": "^4.17.11"
+  }
+}
