@@ -1,0 +1,48 @@
+              Electron API教程
+1.hello world
+    全局安装：npm install -g electron;（开代理或者用cnpm)
+    +C:\Users\27351\AppData\Roaming\npm\node_modules\electron
+    新建项目：mkdir app-electron;
+             cd app-electron; npm init -y; //初始化
+             npm install -S electron; //安装依赖
+    代码：...
+    调试：-> ‘设置’ node.js调试 
+          -> 配置 Electron main （若启动生成路径不对需要手动改）
+            "program": "${workspaceFolder} /ElectronAPI/app-electron/ main.js"
+          -> 添加断点
+    
+2.新概念
+    ASAR:Atom Shell Archive Format，文档归档方法，将有联系的文件打包在一起，提高windows性能。
+    Renderer Process:渲染进程。
+    Main Process:主进程，常指main.js。
+    IPC:Inter-Process Communication,进程间的通讯。
+
+3.模块功能
+    主，渲染进程可以使用的模块不同。
+    都可以使用：
+        shell:通过url操作文件，本地或远程或邮件
+        screen:屏幕相关
+        clipborad：剪贴板
+        crashReporter:崩溃报告
+        nativeImage:所有图片有关
+    渲染进程：
+        ipcRender:ipc信道相关
+        desktopCapturer:捕获桌面声音，视频..
+        remote:用来获取主进程模块（菜单,提示框，对象...)
+        webFrame:指定如何显示渲染网页（缩放，拼写检查...)
+    主进程：
+        app:控制应用程序生命周期
+        BrowserWindow:创建控制浏览器窗口
+        webContents:渲染控制网页
+        ipcMain:发送接收ipc消息
+        dialog:打开保存文件，提供提示框功能
+        Menu:创建菜单
+        MenuItem:Meun中项目
+        net:electron自带http请求库
+        protocol:注册协议
+        session:管理浏览器会话
+        Tray:添加通知栏图标
+
+3.打开窗口
+    
+
