@@ -1,0 +1,148 @@
+=============常用工具安装（ubuntu18）====================
+
+1.git安装
+sudo apt install git;
+	1.1配置：
+
+2.ssh安装
+sudo apt install ssh;
+	2.1生成密钥：ssh-keygen
+	2.2安装服务端：sudo apt install openssh-server(默认安装)
+	   启动：sudo /etc/init.d/ssh start
+	2.3配置：sudo /etc/ssh/sshd_config 设置端口号
+	   重启
+	2.4登陆：
+		ssh usename@154.216.1.17
+		密码
+		断开：exit;
+
+3.apache2安装
+sudo apt install apache2;
+	3.1ufw防火墙配置：sudo ufw app list;
+	...省略
+	3.2管理apache进程
+	停止：sudo systemctl stop apache2;
+	重启：sudo systemctl start apache2;
+	停止并重启：sudo systemctl restart apache2;
+	重启服务：sudo systemctl enable apache2;
+	...
+	3.3设置虚拟主机：
+	3.3.1创建目录：(yxw.com) sudo mkdir -p /var/www/yxw.com/html
+	3.3.2修改权限：sudo chown -R 755 /var/www/yxw.com
+	3.3.3编辑：vim /var/www/yxw.com/html/index.html
+	3.3.4创建虚拟主机文件:
+	sudo cp /etc/apache2/sites-available/000-default.conf 
+			/etc/apache2/sites-available/yxw.com.conf 
+		修改：ServerName yxw.com
+			  ServerAlias www.yxw.com
+			  DocumentRoot /var/www/yxw.com/html
+	3.3.5a2ensite工具关联：
+	sudo a2ensite yxw.com.conf(不好用)
+	或者手动：
+	hosts添加：127.0.0.1   yxw.com
+	yxw.com.conf关联到sites-enabled:sudo ln -s ...
+	重启：sudo /etc/init.d/apache restart;
+		 禁用000-default.conf为默认站点：
+		 sudo a2dissite 000-default.conf
+	3.3.6测试：sudo apache2ctl configtest;
+	     重启：sudo systemctl restart apache2;
+	3.3.7测试：http://yxw.com
+***********************************************************
+                     熟悉重要的Apache文件和目录
+
+现在您已经知道如何管理Apache服务本身，您应该花几分钟时间熟悉一些重要的目录和文件。
+
+内容:
+    /var/www/html ：默认情况下，实际的网页内容仅包含您之前看到的默认Apache页面，它将在/var/www/html目录中提供。 这可以通过修改Apache配置文件来改变。
+
+服务器配置:
+    /etc/apache2 ：Apache配置目录。 所有的Apache配置文件都驻留在这里。
+    /etc/apache2/apache2.conf ：主要的Apache配置文件。 可以修改这个以更改Apache全局配置。 该文件负责加载配置目录中的许多其他文件。
+    /etc/apache2/ports.conf ：该文件指定了Apache将监听的端口。 默认情况下，当启用提供SSL功能的模块时，Apache监听端口80，并在端口443上监听。
+    /etc/apache2/sites-available/ ：可以存储每个站点虚拟主机的目录。 除非链接到sites-enabled目录，否则Apache不会使用此目录中的配置文件。 通常，所有服务器块配置都在此目录中完成，然后通过使用a2ensite命令链接到其他目录来启用。
+    /etc/apache2/sites-enabled/ ：存储已启用每站点虚拟主机的目录。 通常，这些是通过链接到a2ensite的sites-available目录中的配置文件创建的。 Apache在启动或重新加载以编译完整配置时读取此目录中的配置文件和链接。
+    /etc/apache2/conf-available/ ， /etc/apache2/conf-enabled/ ：这些目录与sites-available和sites-enabled sites-available目录具有相同的关系，但用于存储不属于虚拟主机。 conf-available目录中的文件可以使用a2enconf命令启用，并使用a2enconf命令禁用。
+    /etc/apache2/mods-available/ ， /etc/apache2/mods-enabled/ ：这些目录分别包含可用和启用的模块。 以.load结尾的文件包含用于加载特定模块的片段，而以.conf结尾的文件包含这些模块的配置。 可以使用a2enmod和a2dismod命令启用和禁用模块。
+
+服务器日志:
+    /var/log/apache2/access.log ：默认情况下，除非Apache配置为其他方式，否则对Web服务器的每个请求都会记录在此日志文件中。
+    /var/log/apache2/error.log ：默认情况下，所有错误都记录在此文件中。 Apache配置中的LogLevel指令指定错误日志将包含多少细节。
+***********************************************************
+
+4.mysql安装
+sudo apt install mysql-server mysql-client;
+	测试：sudo mysql
+	退出：quit;
+设置：sudo mysql_secure_installation(验证，密码...)
+
+
+5.php安装
+sudo apt install php
+php配置文件： /etc/php/7.2/apache2/php.ini
+php配置文件： /etc/php/7.2/apache2/php.ini
+其他模块：
+sudo apt-get install libapache2-mod-php7.0
+sudo apt-get install php7.0-mysql
+重启：  service apache2 restart
+        service mysql restart
+
+6.sublime text安装
+apt:
+	6.1Install the GPG key:
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | su			do apt-key add -
+	6.2Ensure apt is set up to work with https sources:
+	sudo apt-get install apt-transport-https
+	6.3Select the channel to use:(Stable)
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+	6.4 Update apt sources and install Sublime Text
+	sudo apt-get update
+	sudo apt-get install sublime-text
+
+7.zsh终端安装
+	查看：cat /etc/shells
+	安装zsh: sudo apt-get install zsh;
+	设置当前用户使用：chsh -s /bin/zsh;
+	安装oh my zsh: (https://github.com/robbyrussell/oh-my-zsh)
+		自动安装：wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+8.shadowsocks安装科学上网(先装这个，不然下载外网资源会很慢)
+	客户端：linux(https://github.com/shadowsocks/shadowsocks-qt5/releases)v3.0.1 .AppImage
+	官网下载：（http://shadowsocks.org/en/download/clients.html)
+
+9.wechat安装
+	snap安装：sudo snap install electronic-wechat；
+	直接网页版：https://wx.qq.com/
+
+10.搜狗输入法安装
+	官网下载deb：https://pinyin.sogou.com/linux/?r=pinyin
+	“软件管理”点击“输入法”配置为“Fcite” 重启系统
+	点击桌面上方输入法图标，”配置当前输入法“，将”搜狗输入法“移到第一
+
+11.webstorm安装(激活码:https://gist.github.com/baorv/c45c0188a65f9b3b270964bc99cf634d)
+	1）官网下载：https://www.jetbrains.com/webstorm/download/download-thanks.html?platform=linux
+	解压：sudo tar zxvf WebStorm-2019.1.1.tar.gz
+	进入bin:cd WebStorm-191.6707.60/bin
+	启动（执行）：sudo sh webstorm.sh
+	2）Ubuntu软件
+
+11.npm nodejs安装
+sudo apt install npm;
+npm -v; nodejs -v;
+nodejs: >
+	11.1Vue CLI安装：
+		11.1.1教程(vue-cli 2.9.6)：更新npm:sudo npm install -g npm;
+				查看版本：npm show vue-cli; (latest)
+				安装：sudo npm install -g vue-cli@2.9.6;
+				命令：vue -V; vue init -help; vue list;
+				创建：vue init webpack hello;
+							cd hello;
+							npm run dev / npm start;
+		11.1.2官网(@vue/cli 3.7.0)：安装：npm install -g @vue/cli;(位置 /usr/local/log)
+				查看：vue --version;
+		
+
+
+
+
+	
+

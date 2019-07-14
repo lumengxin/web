@@ -1,0 +1,140 @@
+####################################################################
+一.vue.js
+1.vuejs教程
+Vue是一套构建用户界面的渐进式框架
+Vue只关心视图层，自底向上
+Vue尽可能通过简单api实现响应式的数据绑定和组合的视图组件
+
+2.vuejs安装
+2.1独立安装
+Vue.js官网上下载vue.min.js并引入
+2.2使用CDN方法
+2.3NPM方法
+安装：cnpm install npm -g;(npm -v>3.0)
+用vue.js构建大型应用时推荐用npm安装
+cnpm install vue
+2.3.1命令行工具
+vue-cli：用于快速构建大型单页应用
+
+3.vuejs目录结构
+3.1目录解析
+build 项目构建（webpack）相关代码
+config 配置目录
+node_modules npm加载的项目依赖模块
+src 开发目录
+	assets:放置图片等
+	components:组件文件
+	App.vue:项目入口文件
+	main.js:项目核心文件
+static 静态资源，如图片字体等
+index.html 页入口文件，可添加一些meta或统计代码等
+package.json 项目配置文件
+
+4.vuejs起步
+每个vue应用都要通过实例化vue来实现。
+4.1vue构造器
+当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。
+
+6.vuejs条件与循环
+6.1条件判断:v-if
+
+7.vuejs循环语句
+v-for指令需要以site in sites形式的特殊语法，sites是源数据数组并且site是数组元素迭代的别名
+v-for可以绑定数据到数组来渲染一个列表
+7.1v-for
+7.2v-for迭代对象
+v-for可以通过一个对象的属性来迭代数据
+
+8.vuejs计算属性
+8.1computed
+处理复杂的逻辑
+8.2computed vs methods
+methods可以代替computed,效果一样。
+8.3computed setter
+computed属性默认只有getter,不过需要时也可以提供一个setter
+
+9.vuejs监听属性
+vue.js监听属性watch,可以通过watch来响应数据的变化。
+
+10.vuejs样式绑定
+class与style是html元素的属性，用于设置样式，可以用v-bind来设置样式属性。
+v-bind在处理class和style时，专门增强了他。表达式的结果类型除了字符串，还可以是对象或数组。
+10.1class属性绑定
+v-bind:class设置对象，从而动态的切换class:
+也可以直接绑定数据里的对象:
+可以把一个数组给v-bind:class:
+
+11.vuejs事件处理器
+事件监听可以使用v-on指令：v-on:click=
+11.1事件修饰符
+vue.js为v-on提供了事件修饰符来处理DOM事件细节。如event.preventDefault()。
+vue.js通过点（.）表示的指令后缀来调用修饰符。
+11.2按键修饰符
+vue允许为v-on在监听事件时添加按键修饰符。
+
+12.vuejs表单
+-model会根据控件类型自动正确是方法来更新元素。
+
+13.vuejs组件
+组件是vue.js最强大的功能之一
+组件可以扩展html元素，封装可重用的代码
+组件系统用独立可复用的小组件来构建大型应用
+注册全局组件：Vue.component(tagName, options)
+13.1全局组件
+13.2局部组件
+13.3Prop
+prop是父组价用来传递数据的一个自定义属性
+13.3.1动态Prop
+13.3.2prop验证
+组件可以为props指定验证要求
+prop是一个对象而不是字符串数组时，他包含验证要求：
+13.4自定义事件
+父组件是使用props传递数据给子组件，但如果子组件要把数据传递回去，就需要用自定义事件。
+可以使用v-on绑定自定义事件，每个vue实例都实现了事件接口（Events insterface)，即：
+使用$on(eventName)监听事件
+使用$emit(eventName)触发事件
+
+################################################################
+二.vue_cli(vue.js项目开发的标准的工具)
+	1.Using the new CLI
+	安装：
+	node -v(检查版本)
+	卸载：npm uninstall -g vue-cli
+	npm install -g @vue/cli
+	vue create xin-default
+	cd xin-default
+	npm run serve
+
+	2.Creating a Project
+	old cli:vue init webpack-simple hello
+	new cli:vue create hello
+	Custom Presets:按照需要选择想要的安装插件
+
+	3.the vue gui(使用图形化界面开发) 
+	启动GUI：vue ui
+	Tasks/serve 测试本地服务器数据
+	(sudo) npm install -g @vue/cli-init: 桥接包可以用来使用旧的CLI命令
+
+	4.Plugins
+	添加插件：vue add vuetify(美化界面)
+		default:默认自动配置
+	package.json中配置插件（ps:^模糊版本，去掉则是精确版本/实际项目部署时，精确版本不容易出错）
+
+	5.instant prototyping
+	npm install -g @vue/cli-service-global:全局安装后，在任何地方可构建组件原型
+	运行单个vue组件(onlien.vue):vue serve online.vue(借助cli全局包）
+	(快捷：div.online-status span.light...)
+
+	6.build & deploy to firebase
+	生产部署到firebase服务器上（免费）
+	firebase使用：
+		点击菜单中hosting,安装npm install -g firebase-tools
+		登录：firebase login
+		到指定目录：firebase init（选择public->dist)
+		npm run build(部署到dist中）
+		firebase deploy (--only hosting)
+		(谷歌插件：Vue Devtools 可添加到控制台)
+(https://github.com/lumengxin/web.git)
+	
+
+
